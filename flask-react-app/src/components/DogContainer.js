@@ -1,7 +1,7 @@
 import {useState } from "react";
 
 
-function Dog(){
+function DogContainer(){
     
 const [dogs, setDogs] = useState([
     { name: 'Sky', age: 5, breed: 'Labrador Retriever' },
@@ -22,12 +22,9 @@ const [dogs, setDogs] = useState([
             </div>
         ))}
       </div>
-    )
-    
-  };
-
-  // if data arrives return the result of loaded, if not, an h1 that says loading
+    ) 
+  }
   return dogs ? loaded() : <h1>Loading...</h1>;
 }
 
-export default Dog;
+export default DogContainer;
