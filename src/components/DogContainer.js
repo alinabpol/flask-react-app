@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 
 import DogList from "./DogList";
 
+import NewForm from "../pages/NewForm";
+
 function DogContainer(){
     
 const [dogs, setDogs] = useState([
@@ -13,16 +15,54 @@ const [dogs, setDogs] = useState([
 ])
 
 
-  // Function to get list of Plants
+const URL = 'http://localhost:8000/api/v1/dogs/'
+
+
   const getDogs = async () => {
-    // make api call and get response
-    const response = await fetch('http://localhost:8000/api/v1/dogs/');
-    // turn response into javascript object
+
+    const response = await fetch(URL);
+ 
     const data = await response.json();
-    // set the about state to the data
+
     console.log("here is data:", data);
     setDogs(data.data);
   };
+
+
+  const createDog = async (dog) => {
+
+      await fetch(URL, {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify(dog),
+      })
+      getDogs()
+  }
+  
+  const updateDog = async (dog, id) => {
+
+      await fetch(URL + id, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(dog),
+      });
+
+      getDogs();
+    };
+    
+    const deleteDog = async (id) => {
+      // make post request to create people
+      await fetch(URL + id, {
+          method: "DELETE",
+      });
+      // update list of people
+      getDogs();
+    };
+  
 
   useEffect(() => {
     getDogs();
@@ -33,6 +73,7 @@ const [dogs, setDogs] = useState([
     return (
       <div className="dog-container">
        <DogList dogs={dogs}/>
+       <NewForm createDog={createDog} updateDog={updateDog} deleteDog={deleteDog}/>
       </div>
     ) 
   }

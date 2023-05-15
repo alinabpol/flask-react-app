@@ -1,8 +1,3 @@
-import { Route, Routes } from "react-router-dom";
-import { useEffect, useState } from "react";
-
-import DogContainer from "./DogContainer";
-
 const DogList = (props) => {
 
 
