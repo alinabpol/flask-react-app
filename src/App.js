@@ -2,11 +2,11 @@ import './App.css';
 import Main from "./components/Main"
 import DogNewForm from "./components/DogNewForm"
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-        {/* <Main/> */}
-        <DogNewForm/>
+        <Main/>
+        {/* <DogNewForm/> */}
     </div>
   );
 }

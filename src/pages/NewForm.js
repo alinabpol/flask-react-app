@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import DogNewForm from "../components/DogNewForm";
 
 
-function NewForm(props) {
+const NewForm = () => {
   // state to hold formData
 
   const [newForm, setNewForm] = useState({
@@ -12,7 +12,11 @@ function NewForm(props) {
 });
  
 useEffect(() => {
-  setNewForm();
+  setNewForm({
+    name: "",
+    age: 0,
+    breed: "",
+  });
   // eslint-disable-next-line
 }, []);
 
