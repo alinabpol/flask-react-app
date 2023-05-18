@@ -1,11 +1,12 @@
 import './App.css';
-import Index from "./pages/index";
+import Main from "./components/Main"
+import DogNewForm from "./components/DogNewForm"
 
 function App() {
   return (
     <div className="App">
-        <Index/>
-
+        {/* <Main/> */}
+        <DogNewForm/>
     </div>
   );
 }
