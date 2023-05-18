@@ -16,6 +16,14 @@ const DogList = ({dogs, setDogs}) => {
     setDogs(data.data);
   };
 
+  const deleteDog = async (id) => {
+    // make post request to create people
+    await fetch(URL + id, {
+        method: "DELETE",
+    });
+    window.location.reload();
+  };
+
   useEffect(() => {
     getDogs();
     // eslint-disable-next-line
@@ -26,10 +34,12 @@ const DogList = ({dogs, setDogs}) => {
           <div className="dog-container">
             <h2>Dog Container</h2>
             {dogs.map((dog) => (
-                <div clasName="dogs-details">
+                <div clasName="dogs-details" key={dog.id}>
                 <h2>Name: {dog.name}</h2>
                 <h2>Age: {dog.age}</h2>
                 <h2>Breed: {dog.breed}</h2>
+                <button>Edit</button>
+                <button onClick={() => deleteDog(dog.id)}>Delete</button>
                 </div>
             ))}
           </div>

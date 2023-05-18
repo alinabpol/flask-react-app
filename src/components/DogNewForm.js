@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-
 const DogNewForm = ({newForm, setNewForm, name, age, breed}) => {
   
       
 const createDog = async (dog) => {
+
+    const URL = 'http://localhost:8000/api/v1/dogs/'
 
       await fetch(URL, {
           method: "POST",
@@ -26,13 +26,6 @@ const updateDog = async (dog, id) => {
       });
 };
     
-const deleteDog = async (id) => {
-      // make post request to create people
-      await fetch(URL + id, {
-          method: "DELETE",
-      });
-
-    };
 
   // handleChange function for form
   const handleChange = (event) => {
