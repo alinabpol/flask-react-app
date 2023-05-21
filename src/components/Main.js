@@ -6,6 +6,7 @@ import Index from "../pages/Index";
 import NewForm from "../pages/NewForm";
 import Edit from "../pages/Edit";
 import Register from "../pages/Register";
+import Login from "../pages/Login";
 
 const Main = () => {
 
@@ -46,6 +47,7 @@ return (
         <Route exact path="/form" element={<NewForm/>} />
         <Route exact path="/edit/:id" element={<Edit />} />
         <Route exact path="/register" element={<Register />} />
+        <Route exact path="/login" element={<Login />} />
       </Routes>
     </main>
   )   

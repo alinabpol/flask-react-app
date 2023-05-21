@@ -4,15 +4,24 @@ const Login = () => {
 
 const [user, setUser] = useState({
     username: "",
-    email: "",
-    passsword: ""
+    password: ""
 
 })
    
+// handleChange function for form
+const handleChange = (event) => {
+    setUser({ ...user, [event.target.name]: event.target.value });
+};
 
-const createUser = async (user) => {
+// handle submit function for form
+const handleSubmit = (event) => {
+    event.preventDefault();
+  };
 
-    const URL = 'http://localhost:8000/api/v1/user/login'
+try {
+  const res = async (user) => {
+
+    const URL = 'http://localhost:8000/user/login'
 
       await fetch(URL, {
           method: "POST",
@@ -23,26 +32,17 @@ const createUser = async (user) => {
       })
 
   }
+  if (res){
+  console.log("You have succesfully logged in!")
 
-// handleChange function for form
-const handleChange = (event) => {
-    setUser({ ...user, [event.target.name]: event.target.value });
-};
+} else {
 
-// handle submit function for form
-const handleSubmit = (event) => {
-    event.preventDefault();
-    setUser({
-        username: user.name,
-        email: user.age,
-        password: user.breed
-    });
-  };
-  
-  useEffect(() => {
-    createUser();
-    // eslint-disable-next-line
-  }, []);
+  console.error("User login failed")
+}      
+} catch (error) {
+  console.error("Error occurred while logging in:", error);
+  // Handle the error appropriately
+}
 
 
 return (

@@ -16,7 +16,11 @@ const DogList = ({dogs}) => {
         return (
           <div className="dog-container">
             <h1>Your dogs:</h1>
+            <div className="index-btns">
             <Link to={`/form`} ><button className="new-dog-btn">Add a new dog</button></Link>
+            <Link to={`/register`} ><button className="new-dog-btn">Register</button></Link>
+            <Link to={`/login`} ><button className="new-dog-btn">Login</button></Link>
+            </div>
             {dogs.map((dog) => (
             <div className="dogs-details" key={dog.id}>
                 <h2>Name: {dog.name}</h2>

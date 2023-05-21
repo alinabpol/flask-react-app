@@ -47,6 +47,7 @@ const handleSubmit = (event) => {
         email: user.email,
         password: user.password
     });
+    console.log("user has been created!", user)
   };
 
   useEffect(() => {
