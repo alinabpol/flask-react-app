@@ -15,15 +15,15 @@ const DogList = ({dogs}) => {
     const loaded = () => {
         return (
           <div className="dog-container">
-            <h2>Dog Container</h2>
+            <h1>Your dogs:</h1>
             {dogs.map((dog) => (
-                <div className="dogs-details" key={dog.id}>
+            <div className="dogs-details" key={dog.id}>
                 <h2>Name: {dog.name}</h2>
                 <h2>Age: {dog.age}</h2>
                 <h2>Breed: {dog.breed}</h2>
                 <Link to={`/edit/${dog.id}`} key={dog.id}><button>Edit</button></Link>
                 <button onClick={() => deleteDog(dog.id)}>Delete</button>
-                </div>
+              </div>
             ))}
           </div>
         ) 

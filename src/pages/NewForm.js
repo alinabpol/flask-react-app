@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
 import DogNewForm from "../components/DogNewForm";
-
+import '../App.css'
 
 const NewForm = ({newForm, setNewForm, name, age, breed}) => {
   // state to hold formData

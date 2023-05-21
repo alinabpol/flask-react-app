@@ -23,21 +23,16 @@ const EditForm = ()  => {
 
     useEffect(() => {
         fetchDog();
+    // eslint-disable-next-line
     }, [id]);
-
-
      
    // handleChange function for form
    const handleChange = (event) => {
-    setEditForm({ ...editForm, [event.target.name]: event.target.value });
+        setEditForm({ ...editForm, [event.target.name]: event.target.value });
   };
-
     
-    console.log("dogs on edit page", editForm)
-
-    
-      // handle submit function for form
-      const handleSubmit = (event) => {
+    // handle submit function for form
+    const handleSubmit = (event) => {
         event.preventDefault();
         updateDog(editForm);
         setEditForm({
@@ -50,6 +45,7 @@ const EditForm = ()  => {
     
   
     const updateDog = async () => {
+        // adding id to the payload so that server can accept the request
         const updatedDog = { ...editForm, id: id };
       await fetch(URL, {
         method: "PUT",
@@ -60,11 +56,10 @@ const EditForm = ()  => {
     });
 };
 
-    
-    
-        
+      
 return (
     <div className="dog-form">
+        <h1>Edit the dog:</h1>
         <form onSubmit={handleSubmit}>
             <input
                   type="text"

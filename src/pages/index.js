@@ -1,5 +1,5 @@
 import DogContainer from "../components/DogContainer.js"
-
+import '../App.css'
 
 const Index = ({dogs, setDogs}) => {
 
