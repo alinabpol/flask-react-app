@@ -17,7 +17,7 @@ const DogList = ({dogs}) => {
           <div className="dog-container">
             <h2>Dog Container</h2>
             {dogs.map((dog) => (
-                <div clasName="dogs-details" key={dog.id}>
+                <div className="dogs-details" key={dog.id}>
                 <h2>Name: {dog.name}</h2>
                 <h2>Age: {dog.age}</h2>
                 <h2>Breed: {dog.breed}</h2>

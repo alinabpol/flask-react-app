@@ -36,32 +36,32 @@ const EditForm = ()  => {
     console.log("dogs on edit page", editForm)
 
     
+      // handle submit function for form
+      const handleSubmit = (event) => {
+        event.preventDefault();
+        updateDog(editForm);
+        setEditForm({
+            name: editForm.name,
+            age: editForm.age,
+            breed: editForm.breed
+        });
+      };
+      
+    
   
     const updateDog = async () => {
-  
-      await fetch(URL + id, {
+        const updatedDog = { ...editForm, id: id };
+      await fetch(URL, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(editForm)
-      });
-      window.location.reload()
-    };
-    
-    
-
-  // handle submit function for form
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    updateDog(editForm);
-    setEditForm({
-        name: "",
-        age: 0,
-        breed: "",
+        body: JSON.stringify(updatedDog)
     });
-  };
-  
+};
+
+    
+    
         
 return (
     <div className="dog-form">
