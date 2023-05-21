@@ -16,6 +16,7 @@ const DogList = ({dogs}) => {
         return (
           <div className="dog-container">
             <h1>Your dogs:</h1>
+            <Link to={`/form`} ><button className="new-dog-btn">Add a new dog</button></Link>
             {dogs.map((dog) => (
             <div className="dogs-details" key={dog.id}>
                 <h2>Name: {dog.name}</h2>

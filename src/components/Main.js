@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Index from "../pages/Index";
 import NewForm from "../pages/NewForm";
 import Edit from "../pages/Edit";
+import Register from "../pages/Register";
 
 const Main = () => {
 
@@ -44,6 +45,7 @@ return (
         <Route exact path="/" element={<Index dogs={dogs} setDogs={setDogs}/>} />
         <Route exact path="/form" element={<NewForm/>} />
         <Route exact path="/edit/:id" element={<Edit />} />
+        <Route exact path="/register" element={<Register />} />
       </Routes>
     </main>
   )   
