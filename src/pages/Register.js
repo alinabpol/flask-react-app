@@ -5,9 +5,18 @@ const Register = () => {
 const [user, setUser] = useState({
     username: "",
     email: "",
-    passsword: ""
+    password: ""
 
 })
+
+  
+useEffect(() => {
+  setUser({
+  username: "",
+  email: "",
+  password: ""
+  })
+}, [])
    
 
 const createUser = async (user) => {
@@ -32,13 +41,14 @@ const handleChange = (event) => {
 // handle submit function for form
 const handleSubmit = (event) => {
     event.preventDefault();
+    createUser(user)
     setUser({
-        username: user.name,
+        username: user.username,
         email: user.email,
         password: user.password
     });
   };
-  
+
   useEffect(() => {
     createUser();
     // eslint-disable-next-line
@@ -46,8 +56,8 @@ const handleSubmit = (event) => {
 
 
 return (
-     <div className="dog-form">
-      <h2>Login:</h2>
+     <div className="register-form">
+      <h2>Register:</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -65,14 +75,13 @@ return (
         />
         <input
           type="text"
-          value={user.breed}
+          value={user.password}
           name="password"
           placeholder="password"
           onChange={handleChange}
         />
         <input type="submit" value="Submit" />
       </form>
-    
       </div>
     ) 
 
