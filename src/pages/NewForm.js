@@ -2,27 +2,13 @@ import { useEffect, useState } from "react";
 import DogNewForm from "../components/DogNewForm";
 
 
-const NewForm = () => {
+const NewForm = ({newForm, setNewForm, name, age, breed}) => {
   // state to hold formData
 
-  const [newForm, setNewForm] = useState({
-    name: "",
-    age: 0,
-    breed: "",
-});
- 
-useEffect(() => {
-  setNewForm({
-    name: "",
-    age: 0,
-    breed: "",
-  });
-  // eslint-disable-next-line
-}, []);
 
   return (
     <div>
-      <DogNewForm newForm={newForm} setNewForm={setNewForm} name={newForm.name} age={newForm.age} breed={newForm.breed}/>
+      <DogNewForm newForm={newForm} setNewForm={setNewForm} name={name} age={age} breed={breed}/>
     </div>
 
   );

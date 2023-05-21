@@ -1,12 +1,11 @@
 import './App.css';
 import Main from "./components/Main"
-import DogNewForm from "./components/DogNewForm"
+
 
 const App = () => {
   return (
-    <div className="App">
+    <div clasname="App">
         <Main/>
-        {/* <DogNewForm/> */}
     </div>
   );
 }

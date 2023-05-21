@@ -1,33 +1,16 @@
-import { useEffect } from "react";
-
-const DogList = ({dogs, setDogs}) => {
-
-  console.log("dogs in doglist", dogs)
-  const URL = 'http://localhost:8000/api/v1/dogs/'
+import { Link } from "react-router-dom";
 
 
-  const getDogs = async () => {
-
-    const response = await fetch(URL);
- 
-    const data = await response.json();
-
-    console.log("here is data:", data);
-    setDogs(data.data);
-  };
+const DogList = ({dogs}) => {
 
   const deleteDog = async (id) => {
-    // make post request to create people
     await fetch(URL + id, {
         method: "DELETE",
     });
     window.location.reload();
   };
 
-  useEffect(() => {
-    getDogs();
-    // eslint-disable-next-line
-  }, []);
+
 
     const loaded = () => {
         return (
@@ -38,7 +21,7 @@ const DogList = ({dogs, setDogs}) => {
                 <h2>Name: {dog.name}</h2>
                 <h2>Age: {dog.age}</h2>
                 <h2>Breed: {dog.breed}</h2>
-                <button>Edit</button>
+                <Link to={`/edit/${dog.id}`} key={dog.id}><button>Edit</button></Link>
                 <button onClick={() => deleteDog(dog.id)}>Delete</button>
                 </div>
             ))}

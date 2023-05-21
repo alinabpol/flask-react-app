@@ -1,5 +1,23 @@
-const DogNewForm = ({newForm, setNewForm, name, age, breed}) => {
+import { useEffect, useState } from "react";
+
+const DogNewForm = () => {
   
+
+  const [newForm, setNewForm] = useState({
+    name: "",
+    age: 0,
+    breed: "",
+});
+ 
+useEffect(() => {
+  setNewForm({
+    name: "",
+    age: 0,
+    breed: "",
+  });
+  // eslint-disable-next-line
+}, []);
+
       
 const createDog = async (dog) => {
 
@@ -14,19 +32,7 @@ const createDog = async (dog) => {
       })
 
   }
-  
-const updateDog = async (dog, id) => {
-
-      await fetch(URL + id, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(dog),
-      });
-};
     
-
   // handleChange function for form
   const handleChange = (event) => {
     setNewForm({ ...newForm, [event.target.name]: event.target.value });
@@ -44,10 +50,10 @@ const updateDog = async (dog, id) => {
   };
   
 
-//   useEffect(() => {
-//     getDogs();
-//     // eslint-disable-next-line
-//   }, []);
+  useEffect(() => {
+    createDog();
+    // eslint-disable-next-line
+  }, []);
 
 
 
@@ -57,21 +63,21 @@ const updateDog = async (dog, id) => {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          value={name}
+          value={newForm.name}
           name="name"
           placeholder="name"
           onChange={handleChange}
         />
         <input
           type="number"
-          value={age}
+          value={newForm.age}
           name="age"
           placeholder="age"
           onChange={handleChange}
         />
         <input
           type="text"
-          value={breed}
+          value={newForm.breed}
           name="breed"
           placeholder="breed"
           onChange={handleChange}
