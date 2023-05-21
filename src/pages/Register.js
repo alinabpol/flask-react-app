@@ -12,7 +12,7 @@ const [user, setUser] = useState({
 
 const createUser = async (user) => {
 
-    const URL = 'http://localhost:8000/api/v1/user/register'
+    const URL = 'http://localhost:8000/users/register'
 
       await fetch(URL, {
           method: "POST",
@@ -34,8 +34,8 @@ const handleSubmit = (event) => {
     event.preventDefault();
     setUser({
         username: user.name,
-        email: user.age,
-        password: user.breed
+        email: user.email,
+        password: user.password
     });
   };
   
