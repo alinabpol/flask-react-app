@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 
 const Login = () => {
 
-const [user, setUser] = useState({
+const [loginUser, setLoginUser] = useState({
     username: "",
     password: ""
 
@@ -10,55 +10,48 @@ const [user, setUser] = useState({
    
 // handleChange function for form
 const handleChange = (event) => {
-    setUser({ ...user, [event.target.name]: event.target.value });
+  setLoginUser({ ...loginUser, [event.target.name]: event.target.value });
 };
 
-// handle submit function for form
-const handleSubmit = (event) => {
-    event.preventDefault();
-  };
+const handleSubmit = async (event) => {
+  event.preventDefault();
 
-try {
-  const res = async (user) => {
+  try {
+    const res = await fetch("http://localhost:8000/users/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(loginUser)
+    });
 
-    const URL = 'http://localhost:8000/user/login'
+    if (res.ok) {
+      console.log("You have successfully logged in!");
 
-      await fetch(URL, {
-          method: "POST",
-          headers: {
-              "Content-Type": "application/json"
-          },
-          body: JSON.stringify(user),
-      })
+    } else {
+      console.error("User login failed.");
+
+    }
+  } catch (error) {
+    console.error("Error occurred while logging in:", error);
 
   }
-  if (res){
-  console.log("You have succesfully logged in!")
-
-} else {
-
-  console.error("User login failed")
-}      
-} catch (error) {
-  console.error("Error occurred while logging in:", error);
-  // Handle the error appropriately
-}
-
+};
 
 return (
-     <div className="dog-form">
+     <div className="login-form">
       <h2>Login:</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          value={user.name}
+          value={loginUser.name}
           name="username"
           placeholder="username"
           onChange={handleChange}
         />
         <input
-          type="text"
-          value={user.breed}
+          type="password"
+          value={loginUser.breed}
           name="password"
           placeholder="password"
           onChange={handleChange}
