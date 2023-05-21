@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
+
 import {  useState } from "react";
 
 const Login = () => {
+  const redirect = useNavigate();
 
 const [loginUser, setLoginUser] = useState({
     username: "",
@@ -26,7 +29,8 @@ const handleSubmit = async (event) => {
     });
 
     if (res.ok) {
-      console.log("You have successfully logged in!");
+      console.log("You have successfully logged in!")
+      redirect("/") // redirect to the main page
 
     } else {
       console.error("User login failed.");
